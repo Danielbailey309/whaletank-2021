@@ -11,7 +11,7 @@
     <%= link_to "<< Back", :back %>
     <% if policy(Company).edit? || policy(Company).destroy? %>
         | 
-        <%= link_to "Edit", edit_company_path if policy(Company).edit %>
+        <%= link_to "Edit", edit_company_path if policy(@company).edit? %>
         |
         <%= link_to "Delete", @company, method: :delete, data: { confirm: "Are you sure you want to remove this company?" } if policy(Company).destroy? %>
     <% end %>

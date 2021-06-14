@@ -28,7 +28,7 @@ class CompanyPolicy
   end
 
   def edit?
-    record.owner_id == current_member.user_id
+    [:admin, :editor].any? { |role| member.has_role? role }
   end
 
   def destroy?

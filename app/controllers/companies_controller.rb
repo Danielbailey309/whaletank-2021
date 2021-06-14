@@ -44,6 +44,10 @@ class CompaniesController < ApplicationController
 
     private
 
+    def pundit_user
+        current_member
+    end
+
     def set_company
         @company = Company.find(params[:id])
     end
