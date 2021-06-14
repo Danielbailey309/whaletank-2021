@@ -1,0 +1,30 @@
+<h1>Welcome to the Whale Tank!</h1>
+
+<% if policy(Company).new? %>
+    <p><%= link_to "New Company", new_company_path %></p>
+<% end %>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Owner</th>
+        <th>Cost</th>
+        <% if policy(Company).create? || policy(Company).destroy? %>
+            <th>Actions</th>
+        <% end %>    
+    </tr>
+    <% @companies.each do |company| %>
+        <tr>
+            <td><%= link_to company.name, company_path(company) %></td>
+            <td><%= company.user.full_name %></td>
+            <td><%= company.cost %></td>
+            <% if policy(Company).create? || policy(Company).destroy? %>
+                <td>
+                    <%= link_to "Edit", edit_company_path(company) if policy(Company).edit? %>
+                    | 
+                    <%= link_to "Delete", company, method: :delete, data: { confirm: "Are you sure you want to remove this company?" } if policy(Company).destroy? %>
+                </td>
+            <% end %>
+        </tr>
+    <% end %>
+</table>

@@ -1,0 +1,11 @@
+<h2><%= @user.full_name %></h2>
+<h3>About:</h3>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt aspernatur alias molestiae reprehenderit sequi voluptatibus a facere sapiente ea quaerat adipisci quod vero nihil, eos minus id deleniti vitae ullam!</p>
+<h4><strong>Proposed Companies: </strong></h4>
+<p>
+    <%@user.companies.each do |company|%>
+        <%= link_to company.name, company_path(company) %>
+    <% end %>
+</p>
+<hr>
+<p><%= link_to "<< Back", :back %></p>

@@ -1,0 +1,18 @@
+<h2><%= @company.name %></h2>
+<h3>Proposed by <%= @company.user.full_name %></h3>
+<p><strong>Cost: </strong>$<%= @company.cost %></p>
+<%# If a business plan is attached to this company, render the business plan %>
+<% if @company.businessplan.attached? %>
+    <p><strong>Business Plan:</strong></p>    
+    <p><%= cl_image_tag @company.businessplan.key, crop: :scale, width: 300, cloud_name: "marketplace-project" %></p>
+<% end %>    
+<hr />
+<p>
+    <%= link_to "<< Back", :back %>
+    <% if policy(Company).edit? || policy(Company).destroy? %>
+        | 
+        <%= link_to "Edit", edit_company_path if policy(Company).edit %>
+        |
+        <%= link_to "Delete", @company, method: :delete, data: { confirm: "Are you sure you want to remove this company?" } if policy(Company).destroy? %>
+    <% end %>
+</p>

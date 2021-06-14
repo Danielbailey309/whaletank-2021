@@ -1,0 +1,21 @@
+<%= form_with model: @company, local: true do |f| %>
+    <p>
+        <%= f.label :name %>
+        <%= f.text_field :name %>    
+    </p>
+    <p>
+        <%= f.label :user_id %>
+        <%= f.collection_select :user_id, @users, :id, :full_name %>   
+    </p>
+    <p>
+        <%= f.label :cost %>
+        <%= f.text_field :cost %>
+    </p>
+    <p>
+        <%= f.label :businessplan %>
+        <%= f.file_field :businessplan %>
+    </p>
+    <p>
+        <%= f.submit %>
+    </p>
+<% end %>
