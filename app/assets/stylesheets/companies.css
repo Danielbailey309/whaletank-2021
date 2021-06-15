@@ -1,0 +1,17 @@
+table {
+  display: flex;
+}
+table tbody {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+table tbody tr {
+  display: flex;
+  justify-content: space-between;
+}
+table tbody tr td,
+table tbody tr th {
+  flex: 1;
+  text-align: left;
+}/*# sourceMappingURL=companies.css.map */
